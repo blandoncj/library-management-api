@@ -3,6 +3,7 @@
 ![Library Management](https://img.shields.io/badge/Java-Spring%20Boot-brightgreen)
 ![MySQL](https://img.shields.io/badge/Database-MySQL-blue)
 ![REST API](https://img.shields.io/badge/REST-API-orange)
+![JWT](https://img.shields.io/badge/JWT-Authentication-blueviolet)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A **Library Management System API** built using **Java Spring Boot** and **MySQL**. This system allows both **administrators** and **customers** to manage a library's catalog, users, and book loans efficiently.
@@ -23,12 +24,21 @@ A **Library Management System API** built using **Java Spring Boot** and **MySQL
 
 ---
 
+### Security Features 🔐
+- **Role and Permission Management**: The system uses `Role` and `Permission` entities to handle user roles (e.g., **admin**, **customer**) and permissions for controlling the resources.
+- **JWT Authentication**: Implemented **JSON Web Token (JWT)** authentication for secure login, ensuring that only authenticated users with with the appropriate roles can access certain endpoints.
+- **Spring Security**: The system integrates **Spring Security** to protect the API, managing role-based access control to different resources and operations.
+
+---
+
 ## Technologies Used 🚀
 
 - **Java** with **Spring Boot** for backend API development.
 - **MySQL** for database management.
 - **Maven** for dependency management.
 - **JPA (Java Persistence API)** for database interaction.
+- **JWT** for secure authentication.
+- **Spring Security** for role-based authorization.
 - **RESTful Services** for communication between frontend and backend.
 
 --- 
@@ -66,6 +76,12 @@ Make sure you have the following installed:
      spring.datasource.url=jdbc:mysql://localhost:3306/library_db
      spring.datasource.username=your-username
      spring.datasource.password=your-password
+     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+     spring.jpa.hibernate.ddl-auto=create
+     spring.jpa.properties.hibernate.format_sql=true
+     spring.jpa.show-sql=true
+     security.jwt.key.private=your-secret-key
+     security.jwt.user.generator=your-user-generator
      ```
 
 4. Install dependencies and build the project using Maven:
@@ -88,16 +104,16 @@ The system uses a **relational database (MySQL)** with the following main entiti
 
 - **Book**: Represents a book in the library.
 - **Genre**: Represents the genre of a book.
-- **Customer**: Represents a user of the library.
+- **User**: Represents a user of the library.
 - **Loan**: Represents a book loan requested by a customer.
-
+- **Role**: Represents the role of a user (e.g., Admin, Customer).
+- **Permission**: Represents specific permissions that can be assigned to roles.
 ---
 
 ## Future Improvements 🚧
 
 Here are some future enhancements planned for the system: 
 
-- Add **JWT-based authentication** for secure user login.
 - Implement **unit tests** and **integration tests** for the API.
 - Improve the **pagination** in listing endpoints.
 - Deploy the API on a cloud service (e.g., Heroku or AWS).
