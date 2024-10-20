@@ -6,6 +6,8 @@
 ![JWT](https://img.shields.io/badge/JWT-Authentication-blueviolet)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![Project Overview](docs/images/image.png) 
+
 A **Library Management System API** built using **Java Spring Boot** and **MySQL**. This system allows both **administrators** and **customers** to manage a library's catalog, users, and book loans efficiently.
 
 ## Features ✨
